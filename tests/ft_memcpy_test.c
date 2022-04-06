@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 00:21:15 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/06 01:34:06 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/06 08:52:40 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ Test(ft_memcpy, no_overlap)
 
 	cr_assert(eq(chr[120], dest, expected), "Expected destination to be equal to %s. Got %s.", expected, dest);
 	cr_assert(eq(ptr, dest, result), "Expected return value to point to destination. Expected: %p, got %p.", dest, result);
+}
+
+Test(ft_memcpy, overlap_marlon)
+{
+	char dest[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'z', 'z', 'z', 'z', 'z'};
+	char expected[] = {'0', '1', '2', '3', '4', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+	char *result = ft_memcpy(&dest[5], &dest[0], 10);
+
+	cr_assert(eq(chr[15], dest, expected), "Expected destination to be equal to %s. Got %s.", expected, dest);
+	cr_assert(eq(ptr, &dest[5], result), "Expected return value to point to destination. Expected: %p, got %p.", dest, result);
 }
 
 Test(ft_memcpy, dest_equal_to_src)

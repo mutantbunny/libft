@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:09:31 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/05 02:00:23 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/06 02:46:13 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
-		return c - 'A' + 'a';
-	return c;
+		return (c - 'A' + 'a');
+	return (c);
 }

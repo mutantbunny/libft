@@ -32,12 +32,14 @@ TEST_SRC_FILES = ft_atoi_test.c ft_memchr_test.c ft_strchr_test.c \
 OBJ_FILES = ${SRC_FILES:.c=.o}
 TEST_OBJ_FILES = ${TEST_SRC_FILES:.c=.o}
 TEST_HEADER_FILES = libft_test.h
+HEADER_FILES = ../libft.h
 TEST_FILE = libft_test
 
-all: ${TEST_FILE} test
+all: ${TEST_FILE} norm test
 
 %_test: %_test.o ../%.o FORCE
 	${CC} ${CFLAGS_TEST} $@.o ../${@:_test=.o} -o $@
+	norminette ../${@:_test=.c} ${HEADER_FILES} | grep 'Error\|Warning' || true
 	export LD_LIBRARY_PATH=/home/coder/criterion-2.4.0/lib; ./$@ --verbose
 
 ${TEST_FILE}: ${TEST_OBJ_FILES} ${OBJ_FILES}
@@ -56,6 +58,9 @@ clean:
 fclean: clean
 	${REMOVE} ${TEST_FILE}
 
+norm:
+	norminette ../*.c ../*.h | grep 'Error\|Warning' || true
+
 re:	fclean all
 
 test:
@@ -63,4 +68,4 @@ test:
 
 FORCE:
 
-.PHONY: all clean fclean re test FORCE
+.PHONY: all clean fclean norm re test FORCE
