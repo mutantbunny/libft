@@ -1,7 +1,7 @@
 CC = gcc
 AR = ar rcs
 REMOVE = rm -f
-CFLAGS_TEST = -Wall -Wextra -Werror \
+CFLAGS_TEST = -ggdb -Wall -Wextra -Werror \
          -I /home/coder/criterion-2.4.0/include \
          -L /home/coder/criterion-2.4.0/lib -lcriterion
 
@@ -38,12 +38,12 @@ TEST_FILE = libft_test
 all: ${TEST_FILE} norm test
 
 %_test: %_test.o ../%.o FORCE
-	${CC} ${CFLAGS_TEST} $@.o ../${@:_test=.o} -o $@
+	${CC} ${CFLAGS_TEST} $@.o ../${@:_test=.o} -lbsd -o $@
 	norminette ../${@:_test=.c} ${HEADER_FILES} | grep 'Error\|Warning' || true
 	export LD_LIBRARY_PATH=/home/coder/criterion-2.4.0/lib; ./$@ --verbose
 
 ${TEST_FILE}: ${TEST_OBJ_FILES} ${OBJ_FILES}
-	${CC} ${CFLAGS_TEST} ${TEST_OBJ_FILES} ${OBJ_FILES} -o $@
+	${CC} ${CFLAGS_TEST} ${TEST_OBJ_FILES} ${OBJ_FILES} -lbsd -o $@
 
 %_test.o: %_test.c ${TEST_HEADER_FILES}
 	${CC} ${CFLAGS_TEST} -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 03:07:36 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/06 11:31:39 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/07 10:16:17 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,17 @@ Test(ft_memchr, char_is_negative)
 {
 	char s1[] = "01234";
 	int c = -1;
+	int n = 5;
+
+	char *ft_result = ft_memchr(s1, c, n);
+	char *std_result = memchr(s1, c, n);
+	cr_assert(eq(ptr, ft_result, std_result));
+}
+
+Test(ft_memchr, char_is_not_ascii)
+{
+	char s1[] = "01234";
+	int c = 255;
 	int n = 5;
 
 	char *ft_result = ft_memchr(s1, c, n);

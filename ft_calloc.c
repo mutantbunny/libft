@@ -1,0 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/07 20:53:52 by gmachado          #+#    #+#             */
+/*   Updated: 2022/04/07 21:32:28 by gmachado         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	size_t	total_size;
+
+	total_size = nmemb * size;
+	if (total_size == 0)
+		return (malloc(0));
+	return (ft_memset(malloc(total_size), 0, total_size));
+}
