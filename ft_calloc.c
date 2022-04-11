@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 20:53:52 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/11 02:26:59 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:50:24 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	if (nmemb == 0 || size == 0)
 		return (malloc(0));
 	if (nmemb != total_size / size)
-		return NULL;
+		return (NULL);
 	return (ft_memset(malloc(total_size), 0, total_size));
 }
