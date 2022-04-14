@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 03:09:00 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/13 20:15:13 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/14 11:00:34 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,23 @@ static int	strings_match(const char *big, const char *little, size_t remaining)
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
+	unsigned int little_hash;
+	unsigned int big_hash;
+	size_t little_length;
+
 	if (*little == '\0')
 		return ((char *)big);
 	if (len == 0)
 		return (NULL);
-	while (len-- != 0 && *big != '\0')
+	little_length = get_needle_hash(&little_hash);
+	if (get_initial_hash(big++, &big_hash, little_length))
+		return (NULL);
+	if (little_hash == big_hash)
+		return (big);
+	while (get_rolling_hash(big++, &big_hash, little_length))
 	{
-		if (*big == *little && strings_match(big, little, len + 1))
-			return ((char *)big);
+		if (little_hash == big_hash)
+			return (big);
 		big++;
 	}
 	return (NULL);
