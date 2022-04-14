@@ -6,11 +6,11 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 09:23:07 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/04 18:04:36 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/14 19:38:41 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalpha(int c)
 {
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+	return ((int)((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')));
 }
