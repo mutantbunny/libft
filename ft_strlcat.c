@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:25:20 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/06 22:27:35 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:58:32 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,27 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	const char	*src_start;
 	const char	*dst_start;
-	size_t		dst_len;
+	size_t		dst_length;
 
 	src_start = src;
 	dst_start = dst;
-	dst_len = 0;
-	if (size != 0)
+	while (size != 0 && *dst != '\0')
 	{
-		while (*dst != '\0')
-			dst++;
-		dst_len = dst - dst_start;
-		while (--size > dst_len && *src != '\0')
-			*dst++ = *src++;
-		*dst = '\0';
+		dst++;
+		size--;
 	}
+	dst_length = dst - dst_start;
+	if (size == 0)
+		return (ft_strlen(src) + dst_length);
 	while (*src != '\0')
+	{
+		if (size != 1)
+		{
+			*dst++ = *src;
+			size--;
+		}
 		src++;
-	return (dst_len + src - src_start);
+	}
+	*dst = '\0';
+	return (dst_length + src - src_start);
 }

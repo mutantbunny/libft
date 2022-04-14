@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:51:32 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/08 22:04:32 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:24:16 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (s1 == NULL)
 		return (NULL);
+	if (*s1 == '\0')
+		return (ft_strdup(""));
 	if (set == NULL)
 		return (ft_strdup(s1));
 	ft_bzero(charmap, 255);

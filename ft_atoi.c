@@ -6,11 +6,16 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:52:55 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/07 21:00:20 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/13 20:23:48 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	ft_isspace(char c)
+{
+	return (c == ' ' || (c >= 9 && c <= 13));
+}
 
 int	ft_atoi(const char *nptr)
 {
@@ -21,7 +26,7 @@ int	ft_atoi(const char *nptr)
 		return (0);
 	result = 0;
 	is_negative = 0;
-	while (*nptr == ' ')
+	while (ft_isspace(*nptr))
 		nptr++;
 	if (*nptr == '-')
 	{
