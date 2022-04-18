@@ -21,15 +21,15 @@ OBJ_FILES = ${SRC_FILES:.c=.o}
 BONUS_OBJ_FILES = ${BONUS_SRC_FILES:.c=.o}
 HEADER_FILES = libft.h
 BONUS_HEADER_FILES = libft_bonus.h
-LIB_FILE = libft.a
+NAME = libft.a
 
-all: ${LIB_FILE}
+all: ${NAME}
 
-${LIB_FILE}: ${OBJ_FILES}
+${NAME}: ${OBJ_FILES}
 	${AR} ${LIB_FILE} ${OBJ_FILES}
 
 bonus: ${OBJ_FILES} ${BONUS_OBJ_FILES}
-	${AR} ${LIB_FILE} ${OBJ_FILES} ${BONUS_OBJ_FILES}
+	${AR} ${NAME} ${OBJ_FILES} ${BONUS_OBJ_FILES}
 
 %_bonus.o: %_bonus.c ${HEADER_FILES} ${BONUS_HEADER_FILES}
 	${CC} ${CFLAGS} -c $< -o $@
@@ -41,7 +41,7 @@ clean:
 	${REMOVE} ${OBJ_FILES}
 
 fclean: clean
-	${REMOVE} ${LIB_FILE}
+	${REMOVE} ${NAME}
 
 cleanbonus:
 	${REMOVE} ${BONUS_OBJ_FILES}
