@@ -6,11 +6,11 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 15:16:52 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/04 07:09:17 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/14 19:37:47 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
 {
-	return (c >= '0' && c <= '9');
+	return ((int)(c >= '0' && c <= '9'));
 }
