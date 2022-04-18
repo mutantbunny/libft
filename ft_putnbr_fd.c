@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:08:00 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/13 23:01:24 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/18 20:10:46 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	buffer[MAX_CHARS];
-	int		position;
 	int		divider;
+	char	digit;
 
-	divider = MAX_DIVIDER;
-	position = 0;
 	if (fd < 0)
 		return ;
+	divider = MAX_DIVIDER;
 	if (n == 0)
 	{
 		write(fd, "0", 1);
@@ -32,16 +30,16 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	if (n < 0)
 	{
-		buffer[position++] = '-';
+		write(fd, "-", 1);
 		divider = -divider;
 	}
 	while (divider != 0 && n / divider == 0)
 		divider /= 10;
 	while (divider != 0)
 	{
-		buffer[position++] = '0' + (char)(n / divider);
+		digit = '0' + (char)(n / divider);
+		write(fd, &digit, 1);
 		n %= divider;
 		divider /= 10;
 	}
-	write(fd, buffer, position);
 }

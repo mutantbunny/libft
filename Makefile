@@ -17,34 +17,34 @@ BONUS_SRC_FILES = ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c \
                   ft_lstiter_bonus.c ft_lstlast_bonus.c ft_lstmap_bonus.c \
                   ft_lstnew_bonus.c ft_lstsize_bonus.c
 
-OBJ_FILES = ${SRC_FILES:.c=.o}
-BONUS_OBJ_FILES = ${BONUS_SRC_FILES:.c=.o}
+OBJ_FILES = $(SRC_FILES:.c=.o)
+BONUS_OBJ_FILES = $(BONUS_SRC_FILES:.c=.o)
 HEADER_FILES = libft.h
 BONUS_HEADER_FILES = libft_bonus.h
 NAME = libft.a
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: ${OBJ_FILES}
-	${AR} ${NAME} ${OBJ_FILES}
+$(NAME): $(OBJ_FILES)
+	$(AR} $(NAME} $(OBJ_FILES)
 
-bonus: ${OBJ_FILES} ${BONUS_OBJ_FILES}
-	${AR} ${NAME} ${OBJ_FILES} ${BONUS_OBJ_FILES}
+bonus: $(OBJ_FILES) $(BONUS_OBJ_FILES)
+	$(AR) $(NAME) $(OBJ_FILES) $(BONUS_OBJ_FILES)
 
-%_bonus.o: %_bonus.c ${HEADER_FILES} ${BONUS_HEADER_FILES}
-	${CC} ${CFLAGS} -c $< -o $@
+%_bonus.o: %_bonus.c $(HEADER_FILES) $(BONUS_HEADER_FILES)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-%.o: %.c ${HEADER_FILES}
-	${CC} ${CFLAGS} -c $< -o $@
+%.o: %.c $(HEADER_FILES)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	${REMOVE} ${OBJ_FILES}
+	$(REMOVE) $(OBJ_FILES)
 
 fclean: clean
-	${REMOVE} ${NAME}
+	$(REMOVE) $(NAME)
 
 cleanbonus:
-	${REMOVE} ${BONUS_OBJ_FILES}
+	$(REMOVE) $(BONUS_OBJ_FILES)
 
 cleanall: cleanbonus fclean
 
