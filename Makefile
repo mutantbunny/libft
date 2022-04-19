@@ -26,7 +26,7 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
-	$(AR) $(NAME} $(OBJ_FILES)
+	$(AR) $(NAME) $(OBJ_FILES)
 
 bonus: $(OBJ_FILES) $(BONUS_OBJ_FILES)
 	$(AR) $(NAME) $(OBJ_FILES) $(BONUS_OBJ_FILES)
