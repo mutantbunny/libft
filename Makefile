@@ -38,19 +38,14 @@ bonus: $(OBJ_FILES) $(BONUS_OBJ_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(REMOVE) $(OBJ_FILES)
+	$(REMOVE) $(OBJ_FILES) $(BONUS_OBJ_FILES)
 
 fclean: clean
 	$(REMOVE) $(NAME)
-
-cleanbonus:
-	$(REMOVE) $(BONUS_OBJ_FILES)
-
-cleanall: cleanbonus fclean
 
 re:	fclean all
 
 norm:
 	norminette
 
-.PHONY: all bonus clean cleanall cleanbonus fclean norm re
+.PHONY: all bonus clean fclean norm re
