@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:52:55 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/13 20:23:48 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/21 00:10:25 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	ft_atoi(const char *nptr)
 	int	is_negative;
 	int	result;
 
-	if (nptr == NULL)
-		return (0);
 	result = 0;
 	is_negative = 0;
 	while (ft_isspace(*nptr))

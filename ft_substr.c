@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:09:57 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/13 21:25:59 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/20 15:19:49 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sub_str;
 	size_t	len_s;
 
+	if (s == NULL)
+		return (NULL);
 	len_s = ft_strlen(s);
 	if (start >= len_s)
 		len = 0;

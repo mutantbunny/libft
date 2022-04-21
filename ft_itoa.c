@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 17:54:54 by gmachado          #+#    #+#             */
-/*   Updated: 2022/04/13 21:38:45 by gmachado         ###   ########.fr       */
+/*   Updated: 2022/04/20 14:40:38 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static char	*copy_from_buffer(char *buffer, int end_pos, int is_negative)
 
 	idx = 0;
 	result = (char *)malloc((end_pos + is_negative + 1) * sizeof(char));
+	if (result == NULL)
+		return (NULL);
 	if (is_negative)
 	{
 		result[idx++] = '-';
