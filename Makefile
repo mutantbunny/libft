@@ -27,9 +27,10 @@ all: $(NAME)
 $(NAME): $(OBJ_FILES)
 	$(AR) $(NAME) $(OBJ_FILES)
 
-bonus: $(OBJ_FILES) $(BONUS_OBJ_FILES)
-	$(AR) $(NAME) $(OBJ_FILES) $(BONUS_OBJ_FILES)
-	touch bonus
+bonus: $(NAME:.a=_bonus.a)
+
+$(NAME:.a=_bonus.a): $(OBJ_FILES) $(BONUS_OBJ_FILES)
+	$(AR) $(NAME:.a=_bonus.a) $(OBJ_FILES) $(BONUS_OBJ_FILES)
 
 %_bonus.o: %_bonus.c $(HEADER_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -38,14 +39,14 @@ bonus: $(OBJ_FILES) $(BONUS_OBJ_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(REMOVE) $(OBJ_FILES) $(BONUS_OBJ_FILES) bonus
+	$(REMOVE) $(OBJ_FILES) $(BONUS_OBJ_FILES)
 
 fclean: clean
-	$(REMOVE) $(NAME)
+	$(REMOVE) $(NAME) $(NAME:.a=_bonus.a)
 
 re:	fclean all
 
 norm:
 	norminette
 
-.PHONY: all clean fclean norm re
+.PHONY: all bonus clean fclean norm re
