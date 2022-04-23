@@ -31,6 +31,7 @@ bonus: $(NAME:.a=_bonus.a)
 
 $(NAME:.a=_bonus.a): $(OBJ_FILES) $(BONUS_OBJ_FILES)
 	$(AR) $(NAME:.a=_bonus.a) $(OBJ_FILES) $(BONUS_OBJ_FILES)
+	cp $(NAME:.a=_bonus.a) $(NAME)
 
 %_bonus.o: %_bonus.c $(HEADER_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
